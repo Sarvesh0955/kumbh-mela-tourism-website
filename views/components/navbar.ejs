@@ -12,9 +12,11 @@
             </div>
             <div class="sign-up">
                 <i class="fa-solid fa-user"></i>
-                
-
-
+                    <% if(isLogin) { %>
+                        <a href="/profile"> <%= username %> </a>
+                    <% } else { %>
+                        <a href="/login">Log in</a>
+                    <% } %>
             </div>
         </ul>
     </nav>

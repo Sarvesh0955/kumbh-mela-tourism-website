@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit profile</h1>
+
+    <form action="/profile/<%= user_id %>" method="POST">
+        <label for="name">name</label>
+        <input type="text" name="name" id="name" placeholder="<%= name %>">
+        <br>
+        <label for="password">new password</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

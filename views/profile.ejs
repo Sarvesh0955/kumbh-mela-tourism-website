@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Profile</h1>
+
+    <div>
+        <p>Name : <%= name %></p>
+        <p>Email : <%= email %></p>
+    </div>
+
+    <div>
+        <a href="/profile/<%= user_id %>">Change username or password</a>
+    </div>
+
+    <form action="/profile/<%= user_id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete account</button>
+    </form>
+    
+</body>
+</html>
