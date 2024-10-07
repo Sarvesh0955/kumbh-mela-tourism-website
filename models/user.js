@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema({
     },
     resetPasswordToken : String,
     resetPasswordExpires : Date,
+    blogs: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Blog' 
+        }
+    ]
 });
 
 const User = mongoose.model('User', userSchema);

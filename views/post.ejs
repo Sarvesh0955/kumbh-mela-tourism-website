@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post</title>
+</head>
+<body>
+    <h1><%= post.title %></h1>
+    <h4>Author : <%= post.author.name %></h4>
+    <br>
+    <img src="<%= post.image %>" alt="" style="width:300px;height:200px;">
+    <p><%= post.body %></p>
+
+    <form action="/blog/<%= post._id %>?_method=DELETE" method="post">
+        <button>Delete post</button>
+    </form>
+    
+    <form action="/blog/<%= post._id %>/like" method="post">
+        <button>Like</button>
+    </form>
+    <form action="/blog/<%= post._id %>/unlike" method="post">
+        <button>unlike</button>
+    </form>
+    <p><%= post.likes %></p>
+
+    <a href="/blog/edit/<%= post._id %>">Edit blog</a>
+    <hr>
+
+    <form action="/blog/<%= post._id %>/comment" method="post">
+        <label for="comment">add comment</label>
+        <textarea name="comment" id="comment"></textarea>
+        <button>post</button>
+    </form>
+
+    <hr>
+
+    <% for(let comment of post.comments) { %>
+        <div>
+            <h5><%= comment.username %></h5>
+            <p><%= comment.body %></p>
+            <form action="/blog/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
+                <button>Delete comment</button>
+            </form>
+
+            <form action="/blog/comment/<%= comment._id %>/like" method="post">
+                <button>Like</button>
+            </form>
+            <form action="/blog/comment/<%= comment._id %>/unlike" method="post">
+                <button>unlike</button>
+            </form>
+            <p><%= comment.likes %></p>
+        </div>
+    <% } %>
+</body>
+</html>

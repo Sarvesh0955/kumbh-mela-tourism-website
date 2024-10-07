@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <h1>Blog</h1>
+
+    <a href="/blog/create">Create blog</a>
+
+    <form action="/blog" method="GET">
+        <input type="text" name="q" placeholder="Search by title" />
+        <button type="submit">Search</button>
+    </form>
+
+    <div>
+        <% for(let post of posts) { %>
+            <div>
+                <h3><%= post.title %></h3>
+                <img src="<%= post.image %>" alt="img" style="width:100px;height:100px;">
+                <br>
+                <a href="/blog/<%= post._id %>">open post</a>
+                <form action="/blog/<%= post._id %>/like" method="post">
+                    <button>Like</button>
+                </form>
+                <form action="/blog/<%= post._id %>/unlike" method="post">
+                    <button>unlike</button>
+                </form>
+                <p><%= post.likes %></p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
