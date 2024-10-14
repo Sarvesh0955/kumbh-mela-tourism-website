@@ -3,34 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>User Blogs</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/review.css">
+    <link rel="stylesheet" href="/css/Lf.css">
 </head>
 <body>
-    <h1>Blog</h1>
+    <body>
+            <nav class="navbar">
+                <ul>
+                    <div class="logo">
+                        <a href="#">TPW</a>
+                    </div>
+                    <div class="nav-items">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="/lf/main">Lost And Found</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="/blog">User Blog</a></li>
+                    </div>
+                    <div class="sign-up">
+                        <i class="fa-solid fa-user"></i>
+                        <a href="#">Sign-up</a>
+                    </div>
+                </ul>
+            </nav>
 
-    <a href="/blog/create">Create blog</a>
-
-    <form action="/blog" method="GET">
-        <input type="text" name="q" placeholder="Search by title" />
-        <button type="submit">Search</button>
-    </form>
-
-    <div>
-        <% for(let post of posts) { %>
-            <div>
-                <h3><%= post.title %></h3>
-                <img src="<%= post.image %>" alt="img" style="width:400px;height:400px;">
-                <br>
-                <a href="/blog/<%= post._id %>">open post</a>
-                <form action="/blog/<%= post._id %>/like" method="post">
-                    <button>Like</button>
+            <div class="user-blog-header">
+                <button class="btn-primary lost-btn" onclick="openForm()">
+                    Create Blog
+                </button>
+                <form action="/blog" method="GET">
+                    <input type="text" name="q" class="input-search" placeholder="Search by title">
+                    <button class="mg-5 btn-primary lost-btn">
+                        Search
+                    </button>
                 </form>
-                <form action="/blog/<%= post._id %>/dislike" method="post">
-                    <button>dislike</button>
-                </form>
-                <p><%= post.likes %></p>
             </div>
-        <% } %>
-    </div>
-</body>
-</html>
+
+            <div class="unique-report-form">
+                <button class="unique-close-button">&times;</button>
+                <h2>Create new Blog</h2>
+                <form class="unique-form" action="/blog/create" method="POST" enctype="multipart/form-data">
+                    <input class="unique-input" type="text" name="title" placeholder="Give title in about 20 words" required>
+                    <textarea class="unique-input blog-input-desc" name="body" placeholder="Your Blog here" required></textarea>
+                    <input class="unique-input" type="file" name="image" accept="image/*">
+                    <button class="btn-primary lost-btn new-btn" type="submit">Submit</button>
+                </form>
+            </div>
+        
+        <section class="showcase" id="explore-places">
+            <h1 class="heading-blog"> User's experiences --- </h1>
+            <div class="container">
+                <% for (let i = 0; i < posts.length; i++) { %>
+                <div class="row 
+                    <% if (i%2==0) { %> 
+                        row2
+                    <% } else { %>
+                        row1
+                    <% } %> ">
+                    <div class="img-box">
+                        <img src="<%= posts[i].image %>" alt="pic">
+                    </div>
+                    <div class="text-box">
+                        <div class="number-background"><%= i+1 %></div>
+                         <div class="shift">
+                            <div class="line-text line-blog">
+                                <span class="line"></span>
+                                <span class="guide-title">Let's get Started</span>
+                            </div>
+                            <div class="author guide-title">
+                                <%= posts[i].author.name %> 
+                            </div>
+                            <h2 class="lg-heading"><%= posts[i].title %></h2>
+    
+                            <p class="text-gray"><%= posts[i].body %></p>
+                            <div class="read-btn">
+                                <a href="/blog/<%= posts[i]._id %>" class="btn btn-secondary">Read More</a>
+                                <a href="/blog/<%= posts[i]._id %>">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            <p class="blog-p">
+                                <form action="/blog/<%= posts[i]._id %>/like" method="post" class="blog-fav-icons">
+                                    <button class="like"><i class="fa-regular fa-thumbs-up"></i></button>
+                                </form>
+                                <spam class="blog-likeCount"><%= posts[i].likes %></spam>
+                                <form action="/blog/<%= posts[i]._id %>/dislike" method="post" class="blog-fav-icons">
+                                    <button class="like"><i class="fa-solid fa-thumbs-down"></i></button>
+                                </form>
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+                
+        </section>
+        <section id="#footer">
+            <div  class="container-bot sec-foot" >
+                <div class="left-bot"> 
+                    <div class="class-up">
+                        <h2 class="text-white heading-bot">
+                            TPW
+                        </h2>
+                        <p class="text-white text-smaller">
+                            Get out there , discover your best<br>Festival , have amazing experiences!
+                        </p>
+                    </div>
+                    <div class="class-down">
+                        <p class="text-grey">Copyright 2024 TPW Inc.</p>
+                    </div>
+                </div>
+                <div class="right-bot">
+                    <div class="left-list">
+                        <h3 class="text-yellow">
+                            More on the Blog
+                        </h3>
+                        <ul>
+                            <li><a href="#">About TPW</a></li>
+                            <li><a href="#">Writers</a></li>
+                            <li><a href="#">Write your experiences</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="right-list">
+                        <h3 class="text-yellow">
+                            More on TPW
+                        </h3>
+                        <ul>
+                            <li><a href="#">The Team</a></li>
+                            <li><a href="#">Jobs</a></li>
+                            <li><a href="#">Press</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <button id="goTopBtn" class="go-top-btn"><i class="fa-solid fa-arrow-up-long"></i><br>Top</button>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/js/scroll.js"></script>
+        <script src="/js/toggleForm.js"></script>
+
+        <script src="https://kit.fontawesome.com/578d9ec2d4.js" crossorigin="anonymous"></script>
+    </body>
+    </html>

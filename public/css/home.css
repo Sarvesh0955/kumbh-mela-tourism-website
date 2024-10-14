@@ -1,411 +1,141 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.7;
-}
-
-.home {
-    background-image: 
-        linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%),
-        url('images/ganga-arti.jpeg');
-    background-size: cover;
-    background-position: center;
-    height: 95vh;
+.finder-container {
     display: flex;
-    flex-direction: column;
-    position: relative;
+    min-height: 200vh;
 }
 
-.home::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-}
-
-.navbar {
-    padding: 10px 20px;
-    margin: 10px 100px;
-    position: relative;
-    z-index: 1;
-}
-
-.navbar ul {
-    color: white;
-    font-weight: bold;
-    list-style-type: none;
+/* Main layout */
+.finder-main-content {
     display: flex;
-    justify-content: space-between;
-}
-
-.nav-items {
-    display: flex;
-}
-
-.logo, .sign-up {
-    font-size: 20px;
-}
-
-.logo a, .sign-up a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.navbar ul li {
-    margin-right: 20px;
-}
-
-.navbar ul li a {
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    text-decoration: none;
-    transition: text-decoration 0.3s ease 1s;
-}
-
-.navbar ul li a:hover {
-    text-decoration: underline;
-}
-
-.sign-up img {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.content {
     flex: 1;
-    display: flex;
-    justify-content: space-between;
-    padding: 100px;
-    color: white;
-    position: relative;
-    z-index: 1;
+    background-color: #192229;
+    /* Darker background */
+    /* padding-left: 250px; Add padding to the left for the sidebar */
 }
 
-.content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.yellow {
-    color: #d1bc85;
-}
-
-.line-text {
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-.line-blog {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-.line {
-    flex-grow: 1;
-    height: 2px;
-    background-color: #d1bc85;
-    margin: 0 10px;
-}
-
-.guide-title {
-    font-size: 20px;
-    color: #d1bc85;
-}
-
-.rotate {
-    transform: rotate(90deg);
-    transform-origin: top left;
-    top: 20px;
-    left: 20px;
-}
-
-.space5px {
-    padding: 5px;
-}
-
-h5 a {
-    color: white;
-    text-decoration: none;
-}
-
-/* New Section to Gradually Fade to Black */
-.fade-to-black {
-    height: 20vh;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, #0b1d26 100%);
-}
-
-/* Existing Showcase Section */
-.showcase {
-    padding: 3em 10em;
-    background: #0b1d26;
-}
-
-.row {
-    height: 500px;
-    color: #e8dddd;
-    position: relative;
-    overflow: hidden;
-}
-
-.row1,.row2 {
-    margin-bottom: 12rem;
-}
-
-.row1 .img-box, .row2 .text-box {
-    float: left;
-    width: 50%;
-}
-
-.row2 .img-box, .row1 .text-box {
-    float: right;
-    width: 50%;
-}
-
-.row .img-box {
-    height: 100%;
-}
-.shift{
-    padding-top: 60px;
-}
-.row .text-box {
-    padding: 3rem;
-    position: relative;
-    z-index: 1; /* Ensure text is above the background numbers */
-    padding-left: 100px;
-}
-
-.row .img-box img {
-    border-radius: 50px;
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-
-
-.row::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-/* Large Background Numbers */
-.number-background {
-    z-index: 0; /* Ensure numbers are behind the text */
-    position: absolute;
-    top: -19%;
-    left: 0%;
-    /* transform: translate(-50%, -55%); */
-    font-size: 15rem; /* Adjust size as needed */
-    color: rgba(255, 255, 255, 0.1); /* Light color for background */
-    white-space: nowrap; /* Prevent text wrapping */
-    pointer-events: none; /* Ensure numbers don’t block interactions */
-}
-
-.text-box {
-    position: relative;
-    z-index: 1; /* Ensure text is above the background numbers */
-    padding: 3rem;
-}
-.read-btn a{
-    text-decoration: none;
-    color: #d1bc85;
-}
-.text-white {
-    color: #fff;
-}
-.text-smaller{
-    font-size: 13px;
-    line-height: 2;
-    margin-bottom: 7px;
-}
-.sec-foot{
-    display: flex;
-    justify-content: space-between;
-    background: #0b1d26;
-}
-.text-yellow{
-    color: #d1bc85;
-}
-.right-bot{
-    display: flex;
-    justify-content: flex-end;
-}
-.right-bot ul{
-    color: white;
-    list-style-type: none;
-}
-.right-bot ul a{
-    color: #fff;
-    text-decoration: none;
-}
-
-.right-bot ul li{
-    line-height: 2;
-    margin-bottom: 10px;
-}
-.heading-bot{
-    line-height: 2;
-    margin-bottom: 10px;
-}
-.left-list{
-    margin-right: 150px;
-}
-.class-up{
-    margin-bottom: 80px;
-}
-.text-grey{
-    color: #848e93;
-}
-.container-bot{
-    padding: 0em 10em;
-}
-/* Go to Top Button */
-.go-top-btn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99;
-    font-size: 18px;
-    background-color: #333;
-    color: white;
-    border: none;
+/* Sidebar styling */
+.finder-sidebar {
+    /* position: fixed;  */
+    top: 20;
+    left: 0;
+    height: 80%;
+    background-color: #394048;
     padding: 20px;
-    border-radius: 50%;
-    cursor: pointer;
+    width: 250px;
+    color: #ECE5C7;
+    /* Light text */
+    border-right: 2px solid #D6C594;
+    /* Add a subtle border */
+    /* overflow-y: auto; Allow vertical scrolling if the content overflows */
 }
 
-.go-top-btn:hover {
-    background-color: #555;
-}
-
-
- /* login */
-
- .login-nav {
-    padding: 1em 10em;
-    background: #000000;
-}
-.nav-body{
-    background: #0b1d26;
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-    height: 100vh;
-    color: #fff;
-}
-
-
-.login-container {
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px #0b1d26;
-    width: 300px;
-}
-.login-form h2 {
-    text-align: center;
+.finder-sidebar h2 {
     margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* Bold title for emphasis */
 }
 
-.form-group {
+.finder-filter-group {
     margin-bottom: 15px;
 }
 
-.form-group label {
+.finder-filter-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    /* Bold labels for better readability */
 }
 
-.form-group input {
+.finder-filter-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background-color: #ECE5C7;
+    /* Light input background */
+    color: #000;
+    border: 1px solid #D6C594;
+    /* Subtle border */
+    border-radius: 5px;
+    transition: border 0.3s;
+    /* Smooth border transition */
 }
 
-.login-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #2e302e;
+.finder-filter-group select:focus {
+    outline: none;
+    /* Remove default outline */
+    border-color: #A89C7D;
+    /* Change border color on focus */
+}
+
+/* Button styling */
+.finder-search-btn {
+    background-color: #D6C594;
+    color: #000;
+    padding: 10px 20px;
     border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+    /* Bold text for buttons */
+    transition: background-color 0.3s;
+    /* Smooth background transition */
 }
 
-.login-btn:hover {
-    background-color: #212020;
+.finder-search-btn:hover {
+    background-color: #C2B67C;
+    /* Darker shade on hover */
 }
 
-.login-center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-p a{
-    color: #b89e9e;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-}
-p a:hover{
-    text-decoration: underline;
-}
-.profile-center{
-    margin-left: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start
-    /* justify-content: flex-start; */
-}
-.prof-head{
-    display: flex;
-}
-.prof-head h2{
-    padding: 10px;
-}
-.prof-head h2 a{
-    text-decoration: none;
-    color: #d1bc85;
-}
-.prof-head h2 a:hover{
-    text-decoration: underline;
-    
+/* Content styling */
+.finder-content {
+    flex: 1;
+    padding: 20px;
+    color: #0b1d26;
 }
 
-.logout-btn {
-    /* width: 100%; */
-    padding: 10px;
-    background-color: #112e3c;
-    border: 1px solid #171616;
-    /* border: none;/ */
-    border-radius: 25px;
+.finder-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #D6C594;
+}
+
+/* Item grid layout */
+.finder-item-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.finder-item-card {
+    background-color: #D6C594;
+    border-radius: 10px;
     padding: 15px;
-    color: #d1bc85;
-    font-size: 16px;
-    /* border-radius: 4px; */
-    cursor: pointer;
+    text-align: center;
+    width: 250px;
+    height: 400px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
-.logout-btn:hover{
-    background-color: #071218;
+
+.finder-item-card:hover {
+    transform: scale(1.05);
+}
+
+.finder-item-card img {
+    width: 100%;
+    height: 50%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.finder-item-card h3 {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.finder-item-card p {
+    font-size: 1.2rem;
+    color: #0b1d26;
 }

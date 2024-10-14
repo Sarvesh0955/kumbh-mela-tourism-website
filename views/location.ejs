@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost and Found at <%= location %>
+    </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            /* Dark background */
+            color: #e0e0e0;
+            /* Light text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            background-color: #1e222b;
+            /* Dark blue header */
+            color: #f1c40f;
+            /* Golden text for the header */
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .header span {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        h2 {
+            margin-top: 80px;
+            color: #f1c40f;
+            /* Golden heading */
+            text-align: center;
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            margin: 100px 0 0;
+            padding: 20px;
+            height: calc(100vh - 100px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: #1e222b;
+            /* Dark blue sidebar */
+            color: #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 100px;
+            bottom: 20px;
+            left: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #f1c40f;
+            /* Golden for section headings */
+        }
+
+        .sidebar select,
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #333945;
+            /* Dark input fields */
+            color: #e0e0e0;
+            /* Light text */
+            border: 1px solid #f1c40f;
+            /* Golden borders */
+        }
+
+        .sidebar button {
+            background-color: #f1c40f;
+            /* Golden buttons */
+            color: #1e222b;
+            /* Dark text on buttons */
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        #item-list {
+            margin-left: 260px;
+            width: calc(100% - 280px);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .item {
+            background-color: #1e222b;
+            /* Dark blue background for items */
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 2px solid #f1c40f;
+            /* Golden border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: calc(33% - 40px);
+            text-decoration: none;
+            color: #e0e0e0;
+            /* Light text */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #f1c40f;
+            /* Golden border around images */
+        }
+
+        .item p {
+            margin: 5px 0;
+            color: #f1c40f;
+            /* Golden text for item details */
+        }
+
+        .item:hover {
+            background-color: #333945;
+            /* Slightly lighter on hover */
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .item {
+                width: calc(50% - 40px);
+            }
+
+            .sidebar {
+                width: 200px;
+            }
+
+            #item-list {
+                margin-left: 220px;
+                width: calc(100% - 240px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .item {
+                width: 100%;
+            }
+
+            .sidebar {
+                width: 180px;
+            }
+
+            #item-list {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <span>LOST & FOUND NETWORK</span>
+    </div>
+
+    <h2>Lost and Found Items at <%= location %>
+    </h2>
+
+    <div class="container">
+        <div class="sidebar">
+            <h3>Search Filters</h3>
+            <form id="search-form" method="GET" action="/lf/location/<%= location %>">
+                <select name="landf" required>
+                    <option value="all">All</option>
+                    <option value="lost">Lost</option>
+                    <option value="found">Found</option>
+                </select>
+                <select name="type" required>
+                    <option value="" disabled selected>Select Item Type</option>
+                    <option value="Phones & Tablets">Phones & Tablets</option>
+                    <option value="Bags">Bags</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Watches">Watches</option>
+                    <option value="People">People</option>
+                    <option value="Documents">Documents</option>
+                    <option value="Keys">Keys</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Fashion Accessories">Fashion Accessories</option>
+                    <option value="Clothes & Shoes">Clothes & Shoes</option>
+                    <option value="Pets">Pets</option>
+                    <option value="Sports Equipment">Sports Equipment</option>
+                    <option value="Other">Other</option>
+                    <option value="Automobile">Automobile</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div id="item-list">
+            <% if (items.length===0) { %>
+                <p>No items found at this location.</p>
+                <% } else { %>
+                    <% items.forEach(item=> { %>
+                        <a href="/lf/items/<%= item._id %>" class="item">
+                            <p><strong></strong>
+                                <%= item.landf %>
+                            </p>
+                            <% if (item.photo) { %>
+                                <img src="<%= item.photo %>" alt="<%= item.title %>">
+                                <% } else { %>
+                                    <img src="/lf/uploads/placeholder.jpg" alt="Placeholder Image">
+                                    <% } %>
+                                        <p><strong>Title:</strong>
+                                            <%= item.title %>
+                                        </p>
+                                        <p><strong>Type:</strong>
+                                            <%= item.type %>
+                                        </p>
+                                        <p><strong>Location:</strong>
+                                            <%= item.location %>
+                                        </p>
+                                        <p><strong>Date:</strong>
+                                            <%= new Date(item.date).toLocaleDateString() %>
+                                        </p>
+                        </a>
+                        <% }); %>
+                            <% } %>
+        </div>
+    </div>
+
+</body>
+
+</html>

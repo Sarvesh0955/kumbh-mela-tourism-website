@@ -3,54 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>post</title>
+    <title>Blogs</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Lf.css">
+    <link rel="stylesheet" href="/css/review.css">
+    <link rel="stylesheet" href="/css/blog.css">
 </head>
 <body>
-    <h1><%= post.title %></h1>
-    <h4>Author : <%= post.author.name %></h4>
-    <br>
-    <img src="<%= post.image %>" alt="" style="width:600px;height:400px;">
-    <p><%= post.body %></p>
-
-    <form action="/blog/<%= post._id %>?_method=DELETE" method="post">
-        <button>Delete post</button>
-    </form>
-    
-    <form action="/blog/<%= post._id %>/like" method="post">
-        <button>Like</button>
-    </form>
-    <form action="/blog/<%= post._id %>/dislike" method="post">
-        <button>dislike</button>
-    </form>
-    <p><%= post.likes %></p>
-
-    <a href="/blog/edit/<%= post._id %>">Edit blog</a>
-    <hr>
-
-    <form action="/blog/<%= post._id %>/comment" method="post">
-        <label for="comment">add comment</label>
-        <textarea name="comment" id="comment"></textarea>
-        <button>post</button>
-    </form>
-
-    <hr>
-
-    <% for(let comment of post.comments) { %>
-        <div>
-            <h5><%= comment.username %></h5>
-            <p><%= comment.body %></p>
-            <form action="/blog/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
-                <button>Delete comment</button>
-            </form>
-
-            <form action="/blog/comment/<%= comment._id %>/like" method="post">
-                <button>Like</button>
-            </form>
-            <form action="/blog/comment/<%= comment._id %>/dislike" method="post">
-                <button>dislike</button>
-            </form>
-            <p><%= comment.likes %></p>
+    <nav class="navbar">
+        <ul>
+            <div class="logo">
+                <a href="#">TPW</a>
+            </div>
+            <div class="nav-items">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="lost-found.html">Lost And Found</a></li>
+                <li><a href="#">Contact</a></li>
+            </div>
+            <div class="sign-up">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Sign-up</a>
+            </div>
+        </ul>
+    </nav>
+    <div class='rootClass'>
+        <div class="blog-container">
+          <div class="blog-content">
+            <h1 class="blog-place-name"><%= post.title %></h1>
+            <div class="blog-ratings">
+              <span class="blog-stars">★★★★★</span>
+              <span class="blog-rating-value">(3.8 out of 5)</span>
+              <div class="blog-global-ratings">164 global ratings</div>
+            </div>
+            <p class="blog-header-text"><%= post.author.name %></p>
+          </div>
+          <div class="blog-image-container">
+            <img src="<%= post.image %>" alt="" />
+            <div class="blog-background-layer"></div>
+            <div class="blog-background-layer1"></div>
+          </div>
         </div>
-    <% } %>
+        <div class="blog-container1">
+          <p class="blog-text"><%= post.body %></p>
+          <p class="blog-p">
+            <form action="/blog/<%= post._id %>/like" method="post" class="blog-fav-icons">
+                <button class="like"><i class="fa-regular fa-thumbs-up"></i></button>
+            </form>
+            <spam class="blog-likeCount"><%= post.likes %></spam>
+            <form action="/blog/<%= post._id %>/dislike" method="post" class="blog-fav-icons">
+                <button class="like"><i class="fa-solid fa-thumbs-down"></i></button>
+            </form>
+        </p>
+        </div>
+        <form action="/blog/<%= post._id %>?_method=DELETE" method="post">
+            <button>Delete post</button>
+        </form>
+        <a href="/blog/edit/<%= post._id %>">Edit blog</a>
+      </div>
+      <section id="fades" class="fade-to-dark-blue">
+        
+      </section>
+      
+
+    <section class="write-review container">
+        <h2 class="carousel-title">Rate Your Own Experience</h2>
+        <form action="/blog/<%= post._id %>/comment" method="post">
+          <div class="review-textarea">
+            <label for="comment" class="sr-only">Share your comment</label>
+            <textarea
+              class="input-area"
+              id="reviewInput" 
+              name="comment"
+              placeholder="Share your reviews"
+              rows="5" 
+              required 
+            ></textarea>
+
+          </div>
+          <div class="to-center">
+          <button type="submit" class="btn-primary lost-btn toCenter">Post comment</button>
+          </div>
+        </form>
+      </section>
+
+    <section class="review">
+        <div class="comment-section">
+            <% for(let comment of post.comments) { %>
+                <div class="comment-container">
+                    <h5><%= comment.username %></h5>
+                    <div class="comment-body">
+                        <p><%= comment.body %></p>
+                    </div>
+                    <form action="/blog/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
+                        <button>Delete comment</button>
+                    </form>
+        
+                    <form action="/blog/comment/<%= comment._id %>/like" method="post">
+                        <button>Like</button>
+                    </form>
+        
+                    <form action="/blog/comment/<%= comment._id %>/dislike" method="post">
+                        <button>Dislike</button>
+                    </form>
+        
+                    <p class="like-count">Likes: <%= comment.likes %></p>
+                </div>
+            <% } %>
+        </div>        
+    </section>
+    
+
+    
+      <section id="fades" class="fade-to-blue"></section>
+      <section id="#footer">
+        <div  class="container-bot sec-foot" >
+            <div class="left-bot"> 
+                <div class="class-up">
+                    <h2 class="text-white heading-bot">
+                        TPW
+                    </h2>
+                    <p class="text-white text-smaller">
+                        Get out there , discover your best<br>Festival , have amazing experiences!
+                    </p>
+                </div>
+                <div class="class-down">
+                    <p class="text-grey">Copyright 2024 TPW Inc.</p>
+                </div>
+            </div>
+            <div class="right-bot">
+                <div class="left-list">
+                    <h3 class="text-yellow">
+                        More on the Blog
+                    </h3>
+                    <ul>
+                        <li><a href="#">About TPW</a></li>
+                        <li><a href="#">Writers</a></li>
+                        <li><a href="#">Write your experiences</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="right-list">
+                    <h3 class="text-yellow">
+                        More on TPW
+                    </h3>
+                    <ul>
+                        <li><a href="#">The Team</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <button id="goTopBtn" class="go-top-btn"><i class="fa-solid fa-arrow-up-long"></i><br>Top</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/scroll.js"></script>
+    <script src="/js/toggleForm.js"></script>
+
+    <script src="https://kit.fontawesome.com/578d9ec2d4.js" crossorigin="anonymous"></script>
 </body>
 </html>

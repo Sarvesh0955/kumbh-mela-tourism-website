@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost and Found Items of Type: <%= type %>
+    </title>
+    <style>
+        /* Ensure full height for the body */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #1b2a34;
+            color: #f7f7f7;
+        }
+
+        /* Sidebar - fixed on the left */
+        #sidebar {
+            width: 240px;
+            background-color: #2f3b46;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        #sidebar h3 {
+            color: #f4e1a6;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        #sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        #sidebar ul li a {
+            text-decoration: none;
+            color: #f7f7f7;
+            font-size: 15px;
+            display: block;
+            padding: 10px;
+            background-color: #3a4958;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #sidebar ul li a:hover {
+            background-color: #596d82;
+        }
+
+        /* Main Content */
+        #main-content {
+            margin-left: 300px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        h2 {
+            color: #f4e1a6;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Filter Section */
+        .filter-section a {
+            text-decoration: none;
+            color: #f4e1a6;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .filter-section a.active {
+            font-weight: bold;
+            color: #f4e1a6;
+        }
+
+        /* Item List Styling */
+        #item-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            max-width: 1200px;
+        }
+
+        .item {
+            background-color: #c7b284;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: calc(20% - 40px);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .item p {
+            margin: 5px 0;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .item strong {
+            color: #333;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #c7b284;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #a5906a;
+        }
+
+        /* Responsive Layout Adjustments */
+        @media (max-width: 768px) {
+            #sidebar {
+                width: 200px;
+            }
+
+            #main-content {
+                margin-left: 220px;
+            }
+
+            .item {
+                width: calc(33% - 40px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #sidebar {
+                width: 180px;
+            }
+
+            #main-content {
+                margin-left: 200px;
+            }
+
+            .item {
+                width: calc(50% - 40px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <div class="logo">
+                <a href="#">TPW</a>
+            </div>
+            <div class="nav-items">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="lost-found.html">Lost And Found</a></li>
+                <li><a href="#">Contact</a></li>
+            </div>
+            <div class="sign-up">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Sign-up</a>
+            </div>
+        </ul>
+    </nav>
+
+
+
+    hello
+
+    <div id="sidebar">
+        <h3>Search Filters</h3>
+        <ul>
+            <li><a href="/lf/type/Phones & Tablets" class="category">Phones & Tablets</a></li>
+            <li><a href="/lf/type/Bags" class="category">Bags</a></li>
+            <li><a href="/lf/type/Jewelry" class="category">Jewelry</a></li>
+            <li><a href="/lf/type/Watches" class="category">Watches</a></li>
+            <li><a href="/lf/type/People" class="category">People</a></li>
+            <li><a href="/lf/type/Documents" class="category">Documents</a></li>
+            <li><a href="/lf/type/Keys" class="category">Keys</a></li>
+            <li><a href="/lf/type/Toys" class="category">Toys</a></li>
+            <li><a href="/lf/type/Laptop" class="category">Laptop</a></li>
+            <li><a href="/lf/type/Fashion Accessories" class="category">Fashion Accessories</a></li>
+            <li><a href="/lf/type/Clothes & Shoes" class="category">Clothes & Shoes</a></li>
+            <li><a href="/lf/type/Pets" class="category">Pets</a></li>
+            <li><a href="/lf/type/Sports Equipment" class="category">Sports Equipment</a></li>
+            <li><a href="/lf/type/Other" class="category">Other</a></li>
+            <li><a href="/lf/type/Automobile" class="category">Automobile</a></li>
+        </ul>
+    </div>
+
+
+    <div id="main-content">
+        <h2> lost found items </h2>
+
+        <!-- Item List -->
+        <div id="item-list">
+            <% if (items.length===0) { %>
+                <p>No items found of this type.</p>
+                <% } else { %>
+                    <% items.forEach(item=> { %>
+                        <a href="/lf/items/<%= item._id %>" class="item">
+                            <p><strong>Status:</strong>
+                                <%= item.landf %>
+                            </p>
+                            <img src="/lf/uploads/<%= item.photo ? item.photo : 'placeholder.jpg' %>"
+                                alt="<%= item.title %>">
+                            <p><strong>Title:</strong>
+                                <%= item.title %>
+                            </p>
+                            <p><strong>Location:</strong>
+                                <%= item.location %>
+                            </p>
+                            <p><strong>Date:</strong>
+                                <%= new Date(item.date).toLocaleDateString() %>
+                            </p>
+                        </a>
+                        <% }); %>
+                            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

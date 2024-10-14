@@ -3,19 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kumbh Mela</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-        <h1>Home page</h1>
+    <section class="home"> 
+        <nav class="navbar">
+            <ul>
+                <div class="logo">
+                    <a href="#">TPW</a>
+                </div>
+                <div class="nav-items">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="lost-found.html">Lost And Found</a></li>
+                    <li><a href="#">Contact</a></li>
+                </div>
+                <div class="sign-up">
+                    <i class="fa-solid fa-user"></i>
+                    <% if(isLogin){ %>
+                        <a href="/profile"><%= username %></a>
+                    <% } else { %>
+                        <a href="/login">Login</a>
+                    <% } %>
+                </div>
+            </ul>
+        </nav>
 
-        <% if(isLogin){ %>
-            <a href="/profile"><%= username %></a>
-            <form action="/logout" method="POST">
-                <button>logout</button>
-            </form>
-        <% } else { %>
-            <a href="/login">Login</a>
-            <a href="/signup">Signup</a>
-        <% } %>
+        <div class="content">
+            <div class="rotate">
+                Follow us
+                <i class="fa-brands fa-instagram space5px"></i>
+                <i class="fa-brands fa-twitter space5px"></i>
+            </div>
+            <div class="guide-section">
+                <div class="line-text">
+                    <span class="line"></span>
+                    <span class="guide-title">A Kumbh Mela Guide</span>
+                    <span class="line"></span>
+                </div>
+                <h1>Be Prepared for the <br>Biggest Festival Ever !!!</h1>
+                <h5>
+                    <a href="#fades">Scroll Down</a>
+                    <i class="fa-solid fa-arrow-down-long"></i>
+                </h5>
+            </div>
+            <div>
+                <p class="notvisible">Scroll Down
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="fades" class="fade-to-black"></section>
+
+    <section class="showcase" id="explore-places">
+        <div class="container">
+            <div class="row row1">
+                <div class="img-box">
+                    <img src="./images/Triveni-Ghat-Prayag.jpg" alt="pic">
+                </div>
+                <div class="text-box">
+                    <div class="number-background">01</div>
+                     <div class="shift">
+                        <div class="line-text line-blog">
+                            <span class="line"></span>
+                            <span class="guide-title">Let's get Started</span>
+                        </div>
+                        <h2 class="lg-heading">Have you ever seen a confluence before? Explore the best one.</h2>
+
+                        <p class="text-gray">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit excepturi sint nihil, quae provident nam illum iste repellendus quam atque, labore nobis totam eum animi dicta doloribus a ad necessitatibus aliquam saepe quibusdam eos eaque! Quasi laboriosam cumque ipsa veniam quae! Adipisci dignissimos voluptatum delectus consectetur esse officiis odit molestiae maxime mollitia. A omnis minus non cum aperiam recusandae nobis aliquam! Odit doloremque porro vel repellendus laboriosam ipsa corporis temporibus!</p>
+                        <div class="read-btn">
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                            <a href="#">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row row2">
+                <div class="img-box">
+                    <img src="./images/Victoria-Memorial-Company-Garden-Allahabad.webp" alt="pic">
+                </div>
+                <div class="text-box">
+                    <div class="number-background">02</div>
+                     <div class="shift">
+                        <div class="line-text line-blog">
+                            <span class="line"></span>
+                            <span class="guide-title">Company Musuem</span>
+                        </div>
+                        <h2 class="lg-heading">Grand national museum with archeology, natural history & arts displays in 16 galleries.</h2>
+
+                        <p class="text-gray">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit excepturi sint nihil, quae provident nam illum iste repellendus quam atque, labore nobis totam eum animi dicta doloribus a ad necessitatibus aliquam saepe quibusdam eos eaque! Quasi laboriosam cumque ipsa veniam quae! Adipisci dignissimos voluptatum delectus consectetur esse officiis odit molestiae maxime mollitia. A omnis minus non cum aperiam recusandae nobis aliquam! Odit doloremque porro vel repellendus laboriosam ipsa corporis temporibus!</p>
+                        <div class="read-btn">
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                            <a href="#">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row row1">
+                <div class="img-box">
+                    <img src="./images/KB-11.jpg" alt="pic">
+                </div>
+                <div class="text-box">
+                    <div class="number-background">03</div>
+
+                     <div class="shift">
+                        <div class="line-text line-blog">
+                            <span class="line"></span>
+                            <span class="guide-title">Khusro Bagh</span>
+                        </div>
+                        
+                        <h2 class="lg-heading">Explore the Resting place of Khusro Mirza, emperor Jahangir's son.</h2>
+
+                        <p class="text-gray">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit excepturi sint nihil, quae provident nam illum iste repellendus quam atque, labore nobis totam eum animi dicta doloribus a ad necessitatibus aliquam saepe quibusdam eos eaque! Quasi laboriosam cumque ipsa veniam quae! Adipisci dignissimos voluptatum delectus consectetur esse officiis odit molestiae maxime mollitia. A omnis minus non cum aperiam recusandae nobis aliquam! Odit doloremque porro vel repellendus laboriosam ipsa corporis temporibus!</p>
+                        <div class="read-btn">
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                            <a href="#">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="#footer">
+        <div  class="container-bot sec-foot" >
+            <div class="left-bot"> 
+                <div class="class-up">
+                    <h2 class="text-white heading-bot">
+                        TPW
+                    </h2>
+                    <p class="text-white text-smaller">
+                        Get out there , discover your best<br>Festival , have amazing experiences!
+                    </p>
+                </div>
+                <div class="class-down">
+                    <p class="text-grey">Copyright 2024 TPW Inc.</p>
+                </div>
+            </div>
+            <div class="right-bot">
+                <div class="left-list">
+                    <h3 class="text-yellow">
+                        More on the Blog
+                    </h3>
+                    <ul>
+                        <li><a href="#">About TPW</a></li>
+                        <li><a href="#">Writers</a></li>
+                        <li><a href="#">Write your experiences</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="right-list">
+                    <h3 class="text-yellow">
+                        More on TPW
+                    </h3>
+                    <ul>
+                        <li><a href="#">The Team</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <button id="goTopBtn" class="go-top-btn"><i class="fa-solid fa-arrow-up-long"></i><br>Top</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scroll.js"></script>
 </body>
 </html>

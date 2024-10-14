@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .item {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-decoration: none;
+            /* Remove underline from links */
+            color: inherit;
+            /* Inherit text color */
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .item:hover {
+            background-color: #f0f0f0;
+            /* Highlight on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>List of Lost and Found Items</h2>
+    <div id="item-list"></div>
+
+    <script>
+        async function fetchItems() {
+            try {
+                const response = await fetch('/lf/items');
+                const items = await response.json();
+
+                const itemList = document.getElementById('item-list');
+                itemList.innerHTML = '';
+
+                items.forEach(item => {
+
+                    const itemDiv = document.createElement('a');
+                    itemDiv.classList.add('item');
+                    itemDiv.href = `/lf/items/${item._id}`;
+                    itemDiv.innerHTML = `
+    <p><strong> Title </strong> ${item.title}</p>
+    <p><strong>Type</strong> ${item.type}</p>
+    <p><strong>Location:</strong> ${item.location}</p>
+    <p><strong>Date:</strong> ${new Date(item.date).toLocaleDateString()}</p>
+    ${item.photo ? `<img src="${item.photo}" alt="${item.name}">` : ''}
+`;
+
+                    itemList.appendChild(itemDiv);
+
+                });
+            } catch (error) {
+                console.error('Error fetching items:', error);
+            }
+        }
+
+
+        window.onload = fetchItems;
+    </script>
+
+</body>
+
+</html>

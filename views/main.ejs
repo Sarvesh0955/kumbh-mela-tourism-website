@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumbh Mela</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+
+
+<body>
+    <section class="home">
+        <nav class="navbar">
+            <ul>
+                <div class="logo">
+                    <a href="#">TPW</a>
+                </div>
+                <div class="nav-items">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="lost-found.html">Lost And Found</a></li>
+                    <li><a href="#">Contact</a></li>
+                </div>
+                <div class="sign-up">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="#">Sign-up</a>
+                </div>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="rotate">
+                Follow us
+                <i class="fa-brands fa-instagram space5px"></i>
+                <i class="fa-brands fa-twitter space5px"></i>
+            </div>
+            <div class="guide-section">
+                <div class="line-text">
+                    <span class="line"></span>
+                    <span class="guide-title">Fast and Efficient</span>
+                    <span class="line"></span>
+                </div>
+                <h1>Lost and Found Near You !!</h1>
+
+
+                <div class="form-container">
+                    <div>
+                        <label for="itemType"> <i class="fa-solid fa-circle-chevron-right"></i> Lost What : </label>
+                        <select id="itemType" name="items">
+
+                            <option value="Phones & Tablets">Phones & Tablets</option>
+                            <option value="Bags">Bags</option>
+                            <option value="Jewelry">Jewelry</option>
+                            <option value="Watches">Watches</option>
+                            <option value="People">People</option>
+                            <option value="Documents">Documents</option>
+                            <option value="Keys">Keys</option>
+                            <option value="Toys">Toys</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Fashion Accessories">Fashion Accessories</option>
+                            <option value="Clothes & Shoes">Clothes & Shoes</option>
+                            <option value="Pets">Pets</option>
+                            <option value="Sports Equipment">Sports Equipment</option>
+                            <option value="Other">Other</option>
+                            <option value="Automobile">Automobile</option>
+                        </select>
+
+                        <label for="location"> <i class="fa-solid fa-circle-chevron-right"></i> Location : </label>
+                        <select id="location" name="location">
+
+                            <option value="Railway station">Railway-station</option>
+                            <option value="Triveni Sangam">Triveni-Sangam</option>
+                            <option value="Company museum">Company-museum</option>
+                            <option value="Civil lines">Civil-lines</option>
+                            <option value="Bus Stand">Bus-Stand</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <br>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="btn-primary lost-btn" onclick="findLostItem()">Find</button>
+                    </div>
+                    <div class="padding-5">
+                        <label for="report"> <i class="fa-solid fa-circle-chevron-right"></i> Want to Report a Lost or
+                            Found Item ? </label>
+                        <div class="button-container">
+                            <button class="btn-primary lost-btn" onclick="openForm()">Report Here</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function findLostItem() {
+
+                        const itemType = document.getElementById('itemType').value;
+                        const location = document.getElementById('location').value;
+
+
+                        const baseUrl = "http://localhost:8080/lf";
+                        const type = encodeURIComponent(itemType);
+                        const loc = encodeURIComponent(location);
+                        const landf = "lost";
+
+
+                        const url = `${baseUrl}/location/${loc}?landf=${landf}&type=${type}`;
+                        window.location.href = url;
+                    }
+                </script>
+
+            </div>
+            <div>
+                <p class="notvisible">Scroll Down
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="unique-report-form">
+        <button class="unique-close-button">&times;</button>
+        <h2>Report Issue</h2>
+        <form id="reportForm" class="unique-form" enctype="multipart/form-data">
+            <input class="unique-input" type="text" name="title" placeholder="Give title in about 20 words" required>
+
+            <select class="unique-select" name="landf" required>
+                <option value="" disabled selected>Lost/Found</option>
+                <option value="lost">Lost</option>
+                <option value="found">Found</option>
+            </select>
+
+            <select class="unique-select" name="type" required>
+                <option value="" disabled selected>Select Item Type</option>
+                <option value="Phones & Tablets">Phones & Tablets</option>
+                <option value="Bags">Bags</option>
+                <option value="Jewelry">Jewelry</option>
+                <option value="Watches">Watches</option>
+                <option value="People">People</option>
+                <option value="Documents">Documents</option>
+                <option value="Keys">Keys</option>
+                <option value="Toys">Toys</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Fashion Accessories">Fashion Accessories</option>
+                <option value="Clothes & Shoes">Clothes & Shoes</option>
+                <option value="Pets">Pets</option>
+                <option value="Sports Equipment">Sports Equipment</option>
+                <option value="Other">Other</option>
+                <option value="Automobile">Automobile</option>
+            </select>
+
+            <textarea class="unique-input" name="description" placeholder="Description" required></textarea>
+
+            <select class="unique-select" name="location" required>
+                <option value="" disabled selected>Select location </option>
+                <option value="Railway station">Railway-station</option>
+                <option value="Triveni Sangam">Sangam</option>
+                <option value="Company museum">Company-museum</option>
+                <option value="Civil lines">Civil-lines</option>
+                <option value="Bus Stand">Bus-Stand</option>
+
+                <option value="Chandrashekhar Azad Park">Chandrashekhar Azad Park</option>
+            </select>
+
+            <label class="unique-label" for="date">Date of Submission (dd-mm-yyyy):</label>
+            <input class="unique-input" type="date" id="date" name="date" required>
+
+            <input class="unique-input" type="file" name="photo" accept="image/*">
+            <input class="unique-input" type="text" name="phone" placeholder="+91XXXXXXXXXX" required>
+
+            <button class="btn-primary lost-btn new-btn" type="submit">Submit</button>
+        </form>
+    </div>
+
+
+
+
+    <section id="fades" class="fade-to-black"></section>
+
+    <section class="showcase">
+        <div class="container2">
+            <div class="region">
+                <h2> <i class="fa-solid fa-location-dot"></i> Select a region</h2>
+                <div class="listing">
+                    <div class="row-wize">
+                        <a href="/lf/location/Railway station" class="region-item btn-primary1"><i
+                                class="fa-solid fa-train fa-icon"></i> Railway
+                            station</a>
+                        <a href="/lf/location/Triveni Sangam" class="region-item btn-primary1"><i
+                                class="fa-solid fa-bridge-water fa-icon"></i>
+                            Triveni Sangam</a>
+                    </div>
+                    <div class="row-wize">
+                        <a href="/lf/location/Company Museum" class="region-item btn-primary1"><i
+                                class="fa-solid fa-building-columns fa-icon"></i> Company Museum</a>
+                        <a href="/lf/location/Khusro Bagh" class="region-item btn-primary1"><i
+                                class="fa-solid fa-place-of-worship fa-icon"></i> Khusro Bagh</a>
+                    </div>
+                    <div class="row-wize">
+                        <a href="/lf/location/Civil Lines" class="region-item btn-primary1"><i
+                                class="fa-solid fa-city fa-icon"></i> Civil
+                            Lines</a>
+                        <a href="/lf/location/Bus stand" class="region-item btn-primary1"><i
+                                class="fa-solid fa-bus fa-icon"></i> Bus
+                            Stand</a>
+                    </div>
+                </div>
+            </div>
+            <div class="category-container">
+                <div class="head">
+                    <h2>Browse by <span>Category</span></h2>
+                    <div class="head-item">
+                        <a href="#"><i class="fa-solid fa-bars"></i> View more</a>
+                    </div>
+                </div>
+                <table class="category-table">
+                    <tr>
+                        <td>
+                            <a href="/lf/type/Phones & Tablets" class="category-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <p>Phones & Tablets</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Bags" class="category-item">
+                                <i class="fas fa-shopping-bag"></i>
+                                <p>Bags</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Jewelry" class="category-item">
+                                <i class="fas fa-gem"></i>
+                                <p>Jewelry</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Watches" class="category-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <p>Watches</p>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/lf/type/People" class="category-item">
+                                <i class="fas fa-user"></i>
+                                <p>People</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Documents" class="category-item">
+                                <i class="fas fa-file-alt"></i>
+                                <p>Documents</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Keys" class="category-item">
+                                <i class="fas fa-key"></i>
+                                <p>Keys</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Toys" class="category-item">
+                                <i class="fas fa-horse"></i>
+                                <p>Toys</p>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/lf/type/Laptop" class="category-item">
+                                <i class="fas fa-laptop"></i>
+                                <p>Laptop</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Fashion Accessories" class="category-item">
+                                <i class="fas fa-glasses"></i>
+                                <p>Fashion Accessories</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Clothes & Shoes" class="category-item">
+                                <i class="fas fa-tshirt"></i>
+                                <p>Clothes & Shoes</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Pets" class="category-item">
+                                <i class="fas fa-dog"></i>
+                                <p>Pets</p>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/lf/type/Sports Equipment" class="category-item">
+                                <i class="fas fa-football-ball"></i>
+                                <p>Sports Equipment</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Automobile" class="category-item">
+                                <i class="fas fa-car"></i>
+                                <p>Automobile</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/Other" class="category-item">
+                                <i class="fas fa-folder"></i>
+                                <p>Other</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/lf/type/all" class="category-item">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <p>View More</p>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+    </section>
+
+    <section id="fades" class="fade-to-dark-blue"></section>
+
+    <section class="review">
+        <div class="carousel-container">
+            <h2 class="carousel-title">Success Stories</h2>
+            <div class="carousel" id="testimonialCarousel">
+                <div class="carousel-item active">
+                    <div class="testimonial">
+                        <i class="quote-icon fas fa-quote-left"></i>
+                        <p>Good try! This page is helping people to handle the lost and found things easily.</p>
+                        <h4>Nehul Neha</h4>
+                        <h5>Mumbai</h5>
+                    </div>
+                </div>
+                <div class="carousel-item left">
+                    <div class="testimonial">
+                        <i class="quote-icon fas fa-quote-left"></i>
+                        <p>Thank you for helping me to get my mobile back. Such a great help!</p>
+                        <h4>Krishnan Kutti</h4>
+                        <h5>Trivandrum</h5>
+                    </div>
+                </div>
+                <div class="carousel-item right">
+                    <div class="testimonial">
+                        <i class="quote-icon fas fa-quote-left"></i>
+                        <p>I am really grateful to have found my lost items through this service.</p>
+                        <h4>Sruthi Garu</h4>
+                        <h5>Hyderabad</h5>
+                    </div>
+                </div>
+            </div>
+            <button class="prev" onclick="movePrev()">&#10094;</button>
+            <button class="next" onclick="moveNext()">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="fades" class="fade-to-blue"></section>
+
+    <section id="#footer"></section>
+    <div class="container-bot sec-foot">
+        <div class="left-bot">
+            <div class="class-up">
+                <h2 class="text-white heading-bot">
+                    TPW
+                </h2>
+                <p class="text-white text-smaller">
+                    Get out there , discover your best<br>Festival , have amazing experiences!
+                </p>
+            </div>
+            <div class="class-down">
+                <p class="text-grey">Copyright 2024 TPW Inc.</p>
+            </div>
+        </div>
+        <div class="right-bot">
+            <div class="left-list">
+                <h3 class="text-yellow">
+                    More on the Blog
+                </h3>
+                <ul>
+                    <li><a href="#">About TPW</a></li>
+                    <li><a href="#">Writers</a></li>
+                    <li><a href="#">Write your experiences</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="right-list">
+                <h3 class="text-yellow">
+                    More on TPW
+                </h3>
+                <ul>
+                    <li><a href="#">The Team</a></li>
+                    <li><a href="#">Jobs</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <button id="goTopBtn" class="go-top-btn"><i class="fa-solid fa-arrow-up-long"></i><br>Top</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/scroll.js"></script>
+    <script src="/js/review.js"></script>
+    <script src="/js/toggleForm.js"></script>
+    <script src="https://kit.fontawesome.com/ea974166ac.js" crossorigin="anonymous"></script>
+
+
+
+    <script>
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            carouselItems.forEach((item, index) => {
+                item.classList.remove('active', 'left', 'right');
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                } else if (index === (currentIndex - 1 + carouselItems.length) % carouselItems.length) {
+                    item.classList.add('left');
+                } else if (index === (currentIndex + 1) % carouselItems.length) {
+                    item.classList.add('right');
+                }
+            });
+        }
+
+        function moveNext() {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            currentIndex = (currentIndex + 1) % carouselItems.length;
+            updateCarousel();
+        }
+
+        function movePrev() {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+            updateCarousel();
+        }
+
+        window.onload = updateCarousel;
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("a").on('click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                var fadesSection = $('#fades').offset().top;
+                if ($(window).scrollTop() > fadesSection) {
+                    $('#goTopBtn').fadeIn();
+                } else {
+                    $('#goTopBtn').fadeOut();
+                }
+            });
+            $('#goTopBtn').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 800);
+                return false;
+            });
+        });
+    </script>
+    <script>
+        const reportForm = document.querySelector('.unique-report-form');
+        const closeButton = document.querySelector('.unique-close-button');
+        function openForm() {
+            reportForm.classList.add('active');
+        }
+
+        function closeForm() {
+            reportForm.classList.remove('active');
+        }
+
+        closeButton.addEventListener('click', closeForm);
+    </script>
+    <script>
+        const form = document.querySelector('.unique-form');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/lf/items', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (response.ok) {
+
+                    alert('Item reported successfully!');
+                    location.reload();
+                } else {
+                    const errorData = await response.json();
+                    alert('Failed to report item: ' + errorData.message);
+                }
+            } catch (error) {
+                console.error('Error submitting the form:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

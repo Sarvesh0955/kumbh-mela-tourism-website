@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost and Found Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            border: 2px solid red;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container input,
+        .form-container textarea,
+        .form-container button,
+        .form-container select {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-container input:focus,
+        .form-container textarea:focus,
+        .form-container select:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-container button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container a {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <p><a href="/lf/itemlist">View Uploaded Items</a></p>
+        <h2>Found Form</h2>
+        <form id="lost-found-form" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Give title in about 20 words" required>
+            <select name="landf" required>
+                <option value="" disabled selected>Select Item Type</option>
+                <option value="lost">Lost</option>
+                <option value="found">Found</option>
+
+            </select>
+
+            <select name="type" required>
+                <option value="" disabled selected>Select Item Type</option>
+                <option value="Phones & Tablets">Phones & Tablets</option>
+                <option value="Bags">Bags</option>
+                <option value="Jewelry">Jewelry</option>
+                <option value="Watches">Watches</option>
+                <option value="People">People</option>
+                <option value="Documents">Documents</option>
+                <option value="Keys">Keys</option>
+                <option value="Toys">Toys</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Fashion Accessories">Fashion Accessories</option>
+                <option value="Clothes & Shoes">Clothes & Shoes</option>
+                <option value="Pets">Pets</option>
+                <option value="Sports Equipment">Sports Equipment</option>
+                <option value="Other">Other</option>
+                <option value="Automobile">Automobile</option>
+            </select>
+
+            <textarea name="description" placeholder="Description" required></textarea>
+
+            <select name="location" required>
+                <option value="" disabled selected>Select Location</option>
+                <option value="Triveni Sangam">Triveni Sangam</option>
+                <option value="Railway Station">Railway Station</option>
+                <option value="Airport">Airport</option>
+                <option value="Chandrashekhar Azad Park">Chandrashekhar Azad Park</option>
+            </select>
+
+            <input type="date" name="date" required>
+            <input type="file" name="photo" accept="image/*">
+            <input type="text" name="phone" placeholder="+91XXXXXXXXXX" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('lost-found-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/lf/items', {
+                    method: 'POST',
+                    body: formData
+                });
+
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Item submitted successfully!');
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                alert('Failed to submit the form. Please try again.');
+            }
+        });
+    </script>
+</body>
+
+</html>

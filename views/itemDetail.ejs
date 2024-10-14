@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= item.title %> - Item Details
+    </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-content {
+            flex: 2;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .item-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .item-status {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .item-meta {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .item-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .image-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .nav-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .listing-details {
+            margin-top: 20px;
+        }
+
+        .listing-details h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+
+        .detail-label {
+            font-weight: bold;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .user-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .contact-button,
+        .message-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-button {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .message-button {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        #claim-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #claim-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1 class="item-title">
+                <%= item.title %> <span class="item-status">Lost</span>
+            </h1>
+            <div class="item-meta">
+                <span>
+                    <%= new Date(item.date).toLocaleDateString() %>
+                </span> •
+                <span>
+                    <%= item.location %>
+                </span> •
+                <span>105 Views</span>
+                <span>Reference: <%= item._id %></span>
+            </div>
+
+            <div class="image-nav">
+                <button class="nav-button">❮</button>
+                <button class="nav-button">❯</button>
+            </div>
+
+            <% if (item.photo) { %>
+                <img src="<%= item.photo %>" alt="<%= item.title %>" class="item-image">
+                <% } else { %>
+                    <img src="placeholder-image.jpg" alt="Placeholder" class="item-image">
+                    <% } %>
+
+                        <div class="listing-details">
+                            <h3>Listing details</h3>
+                            <div class="detail-row">
+                                <span class="detail-label">Location:</span>
+                                <span>
+                                    <%= item.location %>
+                                </span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Description:</span>
+                                <span>
+                                    <%= item.description %>
+                                </span>
+                            </div>
+                        </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="user-info">
+                <img src="default-avatar.jpg" alt="User Avatar" class="user-avatar">
+                <div class="user-name">Ajeet Kumar</div>
+                <div>Joined <%= new Date(item.date).toLocaleDateString() %>
+                </div>
+            </div>
+
+            <button class="contact-button">Contact us</button>
+            <button class="message-button">Send a message</button>
+
+            <% if (item.landf !=='lost' ) { %>
+                <form id="claim-form">
+                    <input type="text" name="description" placeholder="Give a description of the item you claim"
+                        required>
+                    <input type="text" name="phone" placeholder="+91XXXXXXXXXX" required>
+                    <button type="submit">Submit Claim</button>
+                </form>
+                <% } %>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('claim-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/lf/claim-item', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userid: '<%= item._id %>',
+                        description: document.querySelector('input[name="description"]').value,
+                        phone: document.querySelector('input[name="phone"]').value
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('We will look into it shortly.');
+                    window.location.href = '/lf/itemlist';
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                alert('Failed to submit the form. Please try again.');
+            }
+        });
+    </script>
+</body>
+
+</html>

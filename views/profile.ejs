@@ -4,24 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <h1>Profile</h1>
+<body class="nav-body">
+<section class="login-nav">
+    <nav class="navbar">
+        <ul>
+            <div class="logo">
+                <a href="#">TPW</a>
+            </div>
+            <div class="nav-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </div>
+            <div class="sign-up">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Sign-up</a>
+            </div>
+        </ul>
+    </nav>
+</section>
 
-    <div>
-        <p>Name : <%= name %></p>
-        <p>Email : <%= email %></p>
+<section  class="fade-to-black"></section>
+
+<section class="profile-center">
+    <div class="prof-head"><h2 class="text-yellow">Name : <%= name %></h2></div>
+    <div class="prof-head"><h2 class="text-yellow">Email : <%= email %></h2></div>
+    <div class="profile-btns">
+        <a class="logout-btn" href="/profile/<%= user_id %>"">Edit Pofile</a>
+        <form action="/profile/<%= user_id %>?_method=DELETE" method="POST">
+            <button type="submit" class="logout-btn">Delete account</button>
+        </form>
+        <form action="/logout" method="POST">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
     </div>
+</section>
 
-    <div>
-        <a href="/profile/<%= user_id %>">Change username or password</a>
-    </div>
 
-    <form action="/profile/<%= user_id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete account</button>
-    </form>
 
-    <a href="/">home page</a>
-    
 </body>
 </html>

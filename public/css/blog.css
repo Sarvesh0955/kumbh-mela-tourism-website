@@ -1,0 +1,233 @@
+.carousel-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 40px 0;
+}
+
+.carousel-title {
+    color: #d0ad53;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel-item {
+    color: #d0ad53;
+    position: absolute;
+    width: 30%;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    padding: 20px;
+    background-color: #0b1d26;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    z-index: 1;
+    transform: scale(0.9); 
+}
+
+/* .carousel-item.active {
+    transform: translateX(0) scale(1.1);
+    opacity: 1;
+    z-index: 10;
+}
+
+.carousel-item.left {
+    transform: translateX(-120%) scale(0.9);
+    opacity: 0.5;
+    z-index: 5;
+}
+
+.carousel-item.right {
+    transform: translateX(120%) scale(0.9);
+    opacity: 0.5;
+    z-index: 5;
+} */
+
+.testimonial {
+    padding: 10px;
+}
+
+.testimonial p {
+    font-size: 1rem;
+    color: #d1bc85;
+}
+
+.testimonial h4 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+}
+
+.testimonial h5 {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.quote-icon {
+    font-size: 2rem;
+    color: #7B3EFB;
+}
+
+.prev, .next {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    z-index: 20;
+}
+
+.prev {
+    left: -40px;
+}
+
+.next {
+    right: -40px;
+}
+
+.prev:hover, .next:hover {
+    background-color: #d0ad53;
+    color: white;
+}
+
+.review{
+    background-color: #0e2530;
+}
+
+
+.write-review{
+    background-color: #0e2530;
+}
+
+.write-review {
+    background-color: #0e2530;
+    padding: 50px;         
+}
+
+.review-textarea {
+    display: flex;         
+    justify-content: center; 
+    align-items: center;  
+    margin-top: 20px;      
+}
+
+.review-textarea textarea {
+    width: 100%;           
+    max-width: 800px;     
+    padding: 10px;         
+    border-radius: 5px;    
+    border: 1px solid #ccc; 
+    resize: none;          
+}
+
+.to-center {
+    margin-left: 350px;    
+}
+.input-area{
+    background-color: #0b1d26;
+    color: white;
+    font-size: 16px;
+}
+
+.comment-section {
+    padding: 30px;
+    background-color: #0b1d26; /* Match the overall background theme */
+    border-radius: 10px;
+    margin-top: 20px;
+    color: #b4b1ab;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.comment-section h5 {
+    font-size: 20px;
+    color: #d1bc85;
+    margin-bottom: 10px;
+}
+
+.comment-section p {
+    color: #b4b1ab;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.comment-section form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.comment-section button {
+    background-color: #112e3c;
+    color: #d1bc85;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-section button:hover {
+    background-color: #071218;
+}
+
+.comment-section .like-count {
+    display: inline-block;
+    color: #d1bc85;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.comment-container {
+    margin-top: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.comment-container:last-child {
+    border-bottom: none; /* Remove the bottom border for the last comment */
+}
+
+.comment-container .comment-body {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.comment-container form button {
+    padding: 6px 12px;
+}
+
+@media (max-width: 768px) {
+    .comment-section {
+        padding: 15px;
+    }
+
+    .comment-section h5 {
+        font-size: 18px;
+    }
+
+    .comment-section p {
+        font-size: 14px;
+    }
+
+    .comment-section button {
+        font-size: 12px;
+    }
+}
