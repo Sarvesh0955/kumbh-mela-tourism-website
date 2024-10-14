@@ -19,14 +19,14 @@
         <% for(let post of posts) { %>
             <div>
                 <h3><%= post.title %></h3>
-                <img src="<%= post.image %>" alt="img" style="width:100px;height:100px;">
+                <img src="<%= post.image %>" alt="img" style="width:400px;height:400px;">
                 <br>
                 <a href="/blog/<%= post._id %>">open post</a>
                 <form action="/blog/<%= post._id %>/like" method="post">
                     <button>Like</button>
                 </form>
-                <form action="/blog/<%= post._id %>/unlike" method="post">
-                    <button>unlike</button>
+                <form action="/blog/<%= post._id %>/dislike" method="post">
+                    <button>dislike</button>
                 </form>
                 <p><%= post.likes %></p>
             </div>

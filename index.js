@@ -368,13 +368,16 @@ app.post('/blog/edit/:id',upload.single('image'), async (req, res) => {
 app.delete('/blog/:id',validate, async (req, res) => {
     try {
         const post = await Blog.findById(req.params.id);
+        const user = await User.findById(req.session.user_id);
         if (!post) {
             return res.status(404).send("Blog post not found.");
         }
         if (post.author.toString() !== req.session.user_id) {
             return res.status(403).send("You are not authorized to delete this post.");
         }
-        await post.remove();
+        user.blogs = user.blogs.filter(c => c.toString() !== req.params.id);
+        await Blog.findByIdAndDelete(req.params.id);
+        await user.save();
         res.redirect('/blog');
     } catch (error) {
         res.status(500).send("Server error while deleting the blog post.");
@@ -391,12 +394,15 @@ app.post('/blog/:id/comment', validate, async (req, res) => {
         };
         const comment = new Comment(data);
         const post = await Blog.findById(req.params.id);
+        const user = await User.findById(req.session.user_id);
         if (!post) {
             return res.status(404).send("Blog post not found.");
         }
         post.comments.push(comment);
+        user.comments.push(comment);
         await comment.save();
         await post.save();
+        await user.save();
         res.redirect(`/blog/${req.params.id}`);
     } catch (error) {
         res.status(500).send("Server error while posting the comment.");
@@ -407,6 +413,7 @@ app.post('/blog/:id/comment', validate, async (req, res) => {
 app.delete('/blog/:id/comment/:c_id',validate, async (req, res) => {
     try {
         const post = await Blog.findById(req.params.id);
+        const user = await User.findById(req.session.user_id);
         if (!post) {
             return res.status(404).send("Blog post not found.");
         }
@@ -418,8 +425,10 @@ app.delete('/blog/:id/comment/:c_id',validate, async (req, res) => {
             return res.status(403).send("You are not authorized to delete this comment.");
         }
         post.comments = post.comments.filter(c => c.toString() !== req.params.c_id);
+        user.comments = user.comments.filter(c => c.toString() !== req.params.c_id);
         await Comment.findByIdAndDelete(req.params.c_id)
         await post.save();
+        await user.save();
         res.redirect(`/blog/${req.params.id}`);
     } catch (error) {
         res.status(500).send("Server error while deleting the comment.");
@@ -441,7 +450,7 @@ app.post('/blog/:id/like',validate,async (req,res) => {
     }
 });
 
-app.post('/blog/:id/unlike', validate, async (req, res) => {
+app.post('/blog/:id/dislike', validate, async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
         const userId = req.session.user_id;
@@ -476,7 +485,7 @@ app.post('/blog/comment/:c_id/like', validate, async (req, res) => {
     }
 });
 
-app.post('/blog/comment/:c_id/unlike', validate, async (req, res) => {
+app.post('/blog/comment/:c_id/dislike', validate, async (req, res) => {
     try {
         const comment = await Comment.findById(req.params.c_id);
         if (!comment) {

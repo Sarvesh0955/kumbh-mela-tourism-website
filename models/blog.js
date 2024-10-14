@@ -63,6 +63,16 @@ const blogSchema = new mongoose.Schema({
     }
 });
 
+blogSchema.post('findByIdAndDelete', async function (doc) {
+    if (doc) {
+        await Comment.deleteMany({
+            _id: {
+                $in: doc.comments
+            }
+        })
+    }
+})
+
 const Blog = mongoose.model('Blog', blogSchema);
 
 module.exports = {Comment, Blog};
